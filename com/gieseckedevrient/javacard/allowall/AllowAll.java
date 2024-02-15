@@ -15,7 +15,17 @@ public class AllowAll extends Applet implements MultiSelectable
         
     private final static byte[] RESPONSE_GET_SPECIFIC = { (byte)0xFF, (byte)0x50, (byte)0x08, (byte) 0xE3, (byte) 0x06, (byte)0xD0, (byte)0x01, (byte)0x01, (byte)0xD1, (byte)0x01, (byte)0x01 };
     
-    private final static byte[] RESPONSE_GET_ALL = {(byte)0xFF, (byte)0x40,(byte)0x10, (byte)0xE2,(byte)0x0E, (byte)0xE1,(byte)0x04, (byte)0x4F,(byte)0x00, (byte)0xC1, (byte)0x00, (byte)0xE3, (byte)0x06, (byte)0xD0, (byte)0x01, (byte)0x01, (byte)0xD1, (byte)0x01, (byte)0x01 };
+    //private final static byte[] RESPONSE_GET_ALL = {(byte)0xFF, (byte)0x40,(byte)0x10, (byte)0xE2,(byte)0x0E, (byte)0xE1,(byte)0x04, (byte)0x4F,(byte)0x00, (byte)0xC1, (byte)0x00, (byte)0xE3, (byte)0x06, (byte)0xD0, (byte)0x01, (byte)0x01, (byte)0xD1, (byte)0x01, (byte)0x01 };
+    // According to: https://android.googlesource.com/platform/frameworks/opt/telephony/+/refs/heads/oreo-m8-release/src/java/com/android/internal/telephony/uicc/UiccCarrierPrivilegeRules.java
+    /*
+     FF40 26
+	E2 24
+	  E1 16
+	    C1 14 3263FBC1526C9020A38BD5F4B2A091784CF6E313
+	  E3 0A
+	    DB 08 FFFFFFFFFFFFFFFF
+     */
+    private final static byte[] RESPONSE_GET_ALL = {(byte)0xFF, (byte)0x40, (byte)0x26, (byte)0xE2, (byte)0x24, (byte)0xE1, (byte)0x16, (byte)0xC1, (byte)0x14, (byte)0x32, (byte)0x63, (byte)0xFB, (byte)0xC1, (byte)0x52, (byte)0x6C, (byte)0x90, (byte)0x20, (byte)0xA3, (byte)0x8B, (byte)0xD5, (byte)0xF4, (byte)0xB2, (byte)0xA0, (byte)0x91, (byte)0x78, (byte)0x4C, (byte)0xF6, (byte)0xE3, (byte)0x13, (byte)0xE3, (byte)0x0A, (byte)0xDB, (byte)0x08, (byte)0xFF, (byte)0xFF, (byte)0xFF, (byte)0xFF, (byte)0xFF, (byte)0xFF, (byte)0xFF, (byte)0xFF};
     
 
     public static void install(byte[] abArray, short sOffset, byte bLength)
